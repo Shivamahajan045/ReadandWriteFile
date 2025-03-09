@@ -13,9 +13,9 @@ used in video streaming and large size file uploads
 
 const http = require("http");
 const routes = require("./routes");
-const server = http.createServer(routes);
+const server = http.createServer(routes.handler);
 
-routes.testFunction(2, 3);
+routes.calSum(1, 2);
 
 server.listen(3000, () => {
   console.log("server is running!");

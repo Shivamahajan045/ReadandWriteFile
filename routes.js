@@ -14,7 +14,7 @@ const requestHandler = (req, res) => {
             `
     );
   } else {
-    if (req.url == "/message") {
+    if (req.url == "/message" && req.method === "POST") {
       res.setHeader("Content-Type", "text/html");
       let dataChunks = [];
       req.on("data", (chunks) => {
@@ -45,17 +45,12 @@ const sum = (a, b) => {
   console.log(a + b);
 };
 
-// module.exports = {
-//   requestHandler,
-//   sum,
-// };
-
-// module.exports = {
-//  handler :  requestHandler,
-//  calSum :  sum,
-// };
+module.exports = {
+  handler: requestHandler,
+  calSum: sum,
+};
 
 //direct export keyword
 
-module.exports.handler = requestHandler;
-module.exports.testFunction = sum;
+// module.exports.calSum = sum;
+// module.exports.handler = requestHandler;
